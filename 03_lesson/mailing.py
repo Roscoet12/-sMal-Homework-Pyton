@@ -5,9 +5,12 @@ class Mailing:
         self.cost = cost
         self.track = track
 
+    def addToAddress(self,to_address):
+        self.to_address = to_address
+
+
+    def addFromAddress(self,from_address):
+        self.from_address = from_address
+
     def __str__(self):
-        return (f'Отправление {self.track} из {self.from_address.index}, {self.from_address.city}, '
-                f'{self.from_address.street}, {self.from_address.house} - {self.from_address.apartment} '
-                f'в {self.to_address.index}, {self.to_address.city}, {self.to_address.street}, '
-                f'{self.to_address.house} - {self.to_address.apartment}. '
-                f'Стоимость {self.cost} рублей.')
+        return f'Отправление {self.track} {self.to_address} в {self.from_address}. Стоимость {self.cost} рублей.'
