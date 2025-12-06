@@ -1,0 +1,129 @@
+1. Функция def capitalize в классе class StringUtils
+в документе string_processor.py принимает любые символы на ввод.
+
+Шаги:
+1. Создать py документ в папке проекта, где находится string_processor.py.
+2. Скопить в созданный документ код:
+import pytest
+from string_processor import StringUtils
+
+stringUtils = StringUtils()
+@pytest.mark.parametrize('string, result', [('  ', '  '),  # пробел
+                                            ('123', '123'),  # цифры
+                                            ('!*!', '!*!')])  # символы
+def test_capitalize_negative(string, result):
+    stringUtils = StringUtils()
+    assert stringUtils.capitalize(string) == result
+
+ОР:
+Согласно документации функция принимает только текст.
+
+ФР:
+Функция принимает любые символы.
+
+Приоритет: Высокий
+
+Серьезность: S4
+
+2. Функция def capitalize в классе class StringUtils
+в документе string_processor.py принимает пустое поле на ввод.
+
+Шаги:
+1. Создать py документ в папке проекта, где находится string_processor.py.
+2. Скопить в созданный документ код:
+import pytest
+from string_processor import StringUtils
+
+stringUtils = StringUtils()
+@pytest.mark.parametrize('string, result', [('', '')])   # пустое поле
+def test_capitalize_negative(string, result):
+    stringUtils = StringUtils()
+    assert stringUtils.capitalize(string) == result
+
+ОР:
+Согласно документации функция принимает только текст.
+
+ФР:
+Функция принимает пустое поле.
+
+Приоритет: Высокий
+
+Серьезность: S4
+
+
+3. Функция def trim в классе class StringUtils
+в документе string_processor.py принимает любые символы на ввод.
+
+Шаги:
+1. Создать py документ в папке проекта, где находится string_processor.py.
+2. Скопить в созданный документ код:
+import pytest
+from string_processor import StringUtils
+
+stringUtils = StringUtils()
+@pytest.mark.parametrize('string, result', [(' 123', '123'),  # цифры
+                                            (' ', ''),  # пробел
+                                            (' !*!', '!*!')])  # символы
+def test_trim_negative(string, result):
+    stringUtils = StringUtils()
+    assert stringUtils.trim(string) == result
+
+ОР:
+Согласно документации функция принимает только текст.
+
+ФР:
+Функция принимает любые символы.
+
+Приоритет: Высокий
+
+Серьезность: S4
+
+
+4.3. Функция def trim  в классе class StringUtils
+в документе string_processor.py принимает пустое поле на ввод
+
+Шаги:
+1. Создать py документ в папке проекта, где находится string_processor.py.
+2. Скопить в созданный документ код:
+import pytest
+from string_processor import StringUtils
+
+stringUtils = StringUtils()
+@pytest.mark.parametrize('string, result', [('', '')])  # пустое поле
+def test_trim_negative(string, result):
+    stringUtils = StringUtils()
+    assert stringUtils.trim(string) == result
+
+ОР:
+Согласно документации функция принимает только текст.
+
+ФР:
+Функция принимает пустое поле
+
+Приоритет: Высокий
+
+Серьезность: S4
+
+5. Функция def contains в классе class StringUtils
+в документе string_processor.py при вводе пустого поля выдает результат True
+
+Шаги:
+1. Создать py документ в папке проекта, где находится string_processor.py.
+2. Скопить в созданный документ код:
+import pytest
+from string_processor import StringUtils
+
+@pytest.mark.parametrize('string, simbol, result', [('', '', False)])  # пустое поле
+def test_contains_negative(string, simbol, result):
+    stringUtils = StringUtils()
+    assert stringUtils.contains(string, simbol) == result
+
+ОР:
+При вводе пустых полей функция выдает значение False
+
+ФР:
+При вводе пустых полей функция выдает значение True
+
+Приоритет: Средний
+
+Серьезность: S4
