@@ -11,9 +11,12 @@ driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install())
 driver.get('https://bonigarcia.dev/selenium-webdriver-java/loading-images.html')
 
 weiter = WebDriverWait(driver, 20)
-weiter.until(
-    EC.text_to_be_present_in_element((By.CSS_SELECTOR, 'p#text'), 'Done!')
-)
+for selector in ['#compass', '#calendar', '#award', '#landscape']:
+   weiter.until(
+       EC.visibility_of_element_located((By.CSS_SELECTOR, selector)))
+
+
+
 img_three = driver.find_element(By.CSS_SELECTOR, '#award').get_attribute('src')
 print(img_three)
 
