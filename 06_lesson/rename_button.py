@@ -14,4 +14,3 @@ button_text = driver.find_element(By.CSS_SELECTOR, '#updatingButton').text
 print(button_text)
 
 driver.quit()
-
