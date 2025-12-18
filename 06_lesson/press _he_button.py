@@ -12,3 +12,4 @@ driver.find_element(By.CSS_SELECTOR, '#ajaxButton').click()
 print(driver.find_element(By.CSS_SELECTOR, '.bg-success').text)
 
 driver.quit()
+
