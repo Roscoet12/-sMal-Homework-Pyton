@@ -21,4 +21,5 @@ class Main:
 
     def result(self):
         self.driver.find_element(By.XPATH, '//span[text() = "="]').click()
-        WebDriverWait(self.driver, 45).until(EC.text_to_be_present_in_element((By.CLASS_NAME, 'screen'), '15'))
+        answer = WebDriverWait(self.driver, 45).until(EC.text_to_be_present_in_element((By.CLASS_NAME, 'screen'), '15'))
+        return answer
