@@ -18,6 +18,6 @@ def test_slow_calculator():
 
     result = main_pages.result()
 
-    return result == True
+    assert result == True
 
     browser.quit()
