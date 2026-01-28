@@ -3,18 +3,18 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
+
 class Yougile:
     def __init__(self, url):
         self.url = url
 
         login = os.getenv("LOGIN")
-        password = os.getenv("PASSWORD")
-
         self.login = login
 
+        password = os.getenv("PASSWORD")
         self.password = password
 
-        name = "Sweettooth"
+        name = os.getenv("COMPANY_NAME")
         self.name = name
 
         self.company_id = self.get_id_company(login, password, name)
@@ -22,7 +22,7 @@ class Yougile:
         self.token = self.get_token(login, password, self.company_id)
 
     def get_id_company(self, login, password, name):
-        creds ={
+        creds = {
             'login': login,
             'password': password,
             'name': name
@@ -36,7 +36,7 @@ class Yougile:
             'password': password,
             'companyId': companyId
         }
-        resp =requests.post(self.url + '/auth/keys', json=creds)
+        resp = requests.post(self.url + '/auth/keys', json=creds)
         return resp.json()['key']
 
     def get_id_employee(self):
@@ -45,8 +45,6 @@ class Yougile:
         }
 
         resp = requests.get(self.url + '/users', headers=headers)
-        response_json = resp.json()
-        print(response_json)
         return resp.json()['content'][0]['id']
 
     def get_new_project(self, title, users):
@@ -57,7 +55,8 @@ class Yougile:
             'title': title,
             'users': users
         }
-        resp = requests.post(self.url + '/projects', json=project,headers=headers)
+        resp = requests.post(self.url + '/projects',
+                             json=project, headers=headers)
         return resp
 
     def get_project(self):
@@ -71,7 +70,8 @@ class Yougile:
         headers = {
             'Authorization': f'Bearer {self.token}'
         }
-        resp = requests.get(self.url + '/projects/' + id_project, headers=headers)
+        resp = requests.get(self.url + '/projects/' + id_project,
+                            headers=headers)
         return resp
 
     def put_project(self, id_project, name_project):
@@ -82,8 +82,6 @@ class Yougile:
             'deleted': True,
             'title': name_project
         }
-        resp = requests.put(self.url + '/projects/' + id_project, json=project, headers=headers)
+        resp = requests.put(self.url + '/projects/' + id_project,
+                            json=project, headers=headers)
         return resp
-
-    def delete_key(self):
-        resp = requests.delete(self.url + '/auth/keys/'+ self.token)
