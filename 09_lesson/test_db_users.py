@@ -34,7 +34,7 @@ def test_change_user_email():
     db.create(user_id, user_email, subject_id)
 
     new_email = "another_email@email.com"
-    db.change_email(new_email)
+    db.change_email(new_email, user_id)
 
     users = db.get_users()
     change_user = None

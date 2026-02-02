@@ -7,7 +7,8 @@ class UsersTable:
                              'VALUES (:user_id, :user_email, :subject_id)'),
         'delete users': text('DELETE FROM users WHERE user_id = :user_id'),
         'select users': text('SELECT * FROM users'),
-        'update users email': text('UPDATE users SET user_email = :user_email ')
+        'update users email': text('UPDATE users SET user_email = :user_email '
+                                   'WHERE user_id = :user_id'),
     }
 
     def __init__(self, connection_string):
@@ -35,9 +36,9 @@ class UsersTable:
         conn.close()
         return rows
 
-    def change_email(self, user_email):
+    def change_email(self, user_email, user_id):
         conn = self.__db.connect()
         conn.execute(self.__scripts['update users email'],
-                     {'user_email': user_email})
+                     {'user_email': user_email, 'user_id': user_id})
         conn.commit()
         conn.close()
